@@ -594,9 +594,7 @@ export function runCli() {
           if (actionsOption.name in argv && argv[actionsOption.name].length > 0) {
             actions = argv[actionsOption.name]
           }
-          const filenames = actions.map((action: string) =>
-            glob.sync(action, {cwd: argv[projectDirMustExistOption.name]})
-          ).flat();
+          const filenames = glob.sync(actions, {cwd: argv[projectDirMustExistOption.name]})
           const results: Array<{ filename: string; err?: Error; }> = await Promise.all(
             filenames.map(async (filename: string) => {
               try {
