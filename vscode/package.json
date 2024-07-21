@@ -59,6 +59,9 @@
     "languages": [
       {
         "id": "sqlx",
+        "aliases": [
+          "Dataform"
+        ],
         "extensions": [
           ".sqlx"
         ],
