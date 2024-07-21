@@ -49,6 +49,8 @@ connection.onRequest("compile", async () => {
   const _ = compileAndValidate();
 });
 
+connection.onRequest("format", format)
+
 documents.onDidSave(change => {
   if (settings.compileOnSave) {
     const _ = compileAndValidate();
@@ -109,6 +111,24 @@ async function compileAndValidate() {
     connection.sendNotification("success", "Project compiled successfully");
   }
   CACHED_COMPILE_GRAPH = parsedResult;
+}
+
+async function format(projectDir: string, action: string) {
+  const spawnedProcess = spawn(
+    (process.platform !== "win32") ? "dataform" : "dataform.cmd",
+    ["format", projectDir, "--actions", action]
+  );
+
+  const formatResult = await getProcessResult(spawnedProcess);
+  if (formatResult.exitCode !== 0) {
+    console.error("Error running 'dataform format':", formatResult);
+    if (formatResult.error?.code === "ENOENT") {
+      connection.sendNotification(
+        "error",
+        "Errors encountered when running 'dataform' CLI. Please ensure that the CLI is installed and up-to-date: 'npm i -g @dataform/cli'."
+      );
+    }
+  }
 }
 
 async function getProcessResult(childProcess: ChildProcess) {

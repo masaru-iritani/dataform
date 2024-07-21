@@ -1,6 +1,7 @@
 {
   "name": "dataform",
   "categories": [
+    "Formatters",
     "Programming Languages"
   ],
   "description": "Syntax highlighting, compilation, and intellisense for Dataform and SQLX projects.",

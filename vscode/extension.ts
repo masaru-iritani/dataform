@@ -41,7 +41,11 @@ export async function activate(context: vscode.ExtensionContext) {
     const _ = client.sendRequest("compile");
   });
 
-  context.subscriptions.push(compile);
+  const formatter = vscode.languages.registerDocumentFormattingEditProvider(
+    "sqlx", { provideDocumentFormattingEdits },
+  );
+
+  context.subscriptions.push(compile, formatter);
 
   client.start();
 
@@ -87,4 +91,42 @@ export async function activate(context: vscode.ExtensionContext) {
       });
     }
   }
+}
+
+async function provideDocumentFormattingEdits(_document: vscode.TextDocument, _options: vscode.FormattingOptions, token: vscode.CancellationToken): Promise<vscode.TextEdit[]> {
+  const projectDir = await getProjectDirPath(token);
+  if (projectDir instanceof Error) {
+    await vscode.window.showErrorMessage(projectDir.message);
+    return;
+  }
+
+  // Pass the path of the current file relative to the workspace root
+  // (assuming that is same with the Dataform project directory) as an action.
+  const action = vscode.workspace.asRelativePath(vscode.window.activeTextEditor.document.uri, false)
+  await client.sendRequest("format", [projectDir, action], token);
+}
+
+// Gets the file system path to the current workspace root if it's a local
+// Dataform project directory, or an error otherwise.
+async function getProjectDirPath(token?: vscode.CancellationToken): Promise<string | Error> {
+  // Check if the current document is in a workspace.
+  const folder = vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor.document.uri);
+  if (!folder) {
+    return new Error("Dataform files outside of a workspace are not supported.");
+  }
+
+  // Check if the workspace is local.
+  if (folder.uri.scheme !== "file") {
+    return new Error("Remote Dataform files are not supported.");
+  }
+
+  // Check if the workspace root has a Dataform setting file.
+  // dataform.json has been deprecated but is still supported.
+  const yamlPattern = new vscode.RelativePattern(folder, "{workflow_settings.yaml,dataform.json}");
+  const yamls = await vscode.workspace.findFiles(yamlPattern, null, 1, token)
+  if (yamls.length === 0) {
+    return new Error("Workspaces without workflow_settings.yaml (or dataform.json) are not supported.");
+  }
+
+  return folder.uri.fsPath;
 }
