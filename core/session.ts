@@ -319,29 +319,7 @@ export class Session {
     if (preferredCandidates.length === 1) {
       return preferredCandidates;
     }
-
-    const maxMatchCount = Math.max(
-      ...candidates.map(candidate => this.defaultTargetMatchCount(candidate.getTarget()))
-    );
-    if (maxMatchCount === 0) {
-      return candidates;
-    }
-
-    const bestCandidates = candidates.filter(
-      candidate => this.defaultTargetMatchCount(candidate.getTarget()) === maxMatchCount
-    );
-    return bestCandidates.length === 1 ? bestCandidates : candidates;
-  }
-
-  private defaultTargetMatchCount(target: dataform.ITarget): number {
-    let matchCount = 0;
-    if (!!this.projectConfig.defaultDatabase && target.database === this.projectConfig.defaultDatabase) {
-      matchCount += 1;
-    }
-    if (!!this.projectConfig.defaultSchema && target.schema === this.projectConfig.defaultSchema) {
-      matchCount += 1;
-    }
-    return matchCount;
+    return candidates;
   }
 
   /**
