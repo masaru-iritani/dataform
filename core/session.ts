@@ -255,7 +255,7 @@ export class Session {
 
   public resolve(ref: Resolvable | string[], ...rest: string[]): string {
     ref = toResolvable(ref, rest);
-    const allResolved = this.indexedActions.find(utils.resolvableAsTarget(ref));
+    const allResolved = this.findResolvableActions(ref);
     if (allResolved.length > 1) {
       this.compileError(new Error(utils.ambiguousActionNameMsg(ref, allResolved)));
       return "";
@@ -282,7 +282,7 @@ export class Session {
     ...rest: string[]
   ): dataform.ITarget | undefined {
     ref = toResolvable(ref, rest);
-    const allResolved = this.indexedActions.find(utils.resolvableAsTarget(ref));
+    const allResolved = this.findResolvableActions(ref);
     if (allResolved.length !== 1) {
       return undefined;
     }
@@ -300,6 +300,26 @@ export class Session {
       schema: this.finalizeSchema(target.schema),
       name: this.finalizeName(target.name)
     };
+  }
+
+  private findResolvableActions(ref: Resolvable): Action[] {
+    const refTarget = utils.resolvableAsTarget(ref);
+    const candidates = this.indexedActions.find(refTarget);
+    if (candidates.length <= 1 || refTarget.schema || refTarget.database) {
+      return candidates;
+    }
+
+    const fallbackCandidates = candidates.filter(candidate => {
+      const candidateTarget = candidate.getTarget();
+      return (
+        candidateTarget.database === this.projectConfig.defaultDatabase &&
+        candidateTarget.schema === this.projectConfig.defaultSchema
+      );
+    });
+    if (fallbackCandidates.length === 1) {
+      return fallbackCandidates;
+    }
+    return candidates;
   }
 
   /**
