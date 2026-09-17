@@ -227,7 +227,9 @@ publish("b", {"schema": "foo"}).dependencies("a")`
     const result = runMainInVm(coreExecutionRequestFromPath(projectDir));
 
     expect(result.compile.compiledGraph.graphErrors.compilationErrors).deep.equals([]);
-    expect(result.compile.compiledGraph.tables[3].query).deep.equals(
+    expect(
+      result.compile.compiledGraph.tables.find(table => table.target.name === "consumer").query
+    ).deep.equals(
       "SELECT * FROM `defaultProject.defaultDataset.a`"
     );
   });

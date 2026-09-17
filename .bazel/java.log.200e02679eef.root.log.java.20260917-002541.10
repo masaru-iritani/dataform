@@ -1,0 +1,228 @@
+260917 00:25:41.041:I 1 [com.google.devtools.build.lib.analysis.BlazeVersionInfo.logVersionInfo] Bazel version info: Build label: 7.3.2
+Build target: @@//src/main/java/com/google/devtools/build/lib/bazel:BazelServer
+Build time: Tue Oct 1 17:46:05 2024 (1727804765)
+Build timestamp: 1727804765
+Build timestamp as int: 1727804765
+260917 00:25:41.216:I 1 [com.google.devtools.build.lib.runtime.BlazeRuntime.main] Starting Bazel server with pid 10 and , args [--max_idle_secs=10800, --noshutdown_on_low_sys_mem, --connect_timeout_secs=30, --output_user_root=/root/.cache/bazel/_bazel_root, --install_base=/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75, --install_md5=aeea4605fbb10c56d04772b8e314db75, --output_base=/workspace/.bazel, --workspace_directory=/workspace, --default_system_javabase=/usr/lib/jvm/java-8-openjdk-amd64, --failure_detail_out=/workspace/.bazel/failure_detail.rawproto, --expand_configs_in_place, --idle_server_tasks, --write_command_log, --nowatchfs, --nofatal_event_bus_exceptions, --nowindows_enable_symlinks, --client_debug=false, --product_name=Bazel, --option_sources=output_Ubase:/root/.bazelrc]
+260917 00:25:41.948:I 31 [com.google.devtools.build.lib.server.CommandManager.registerCommand] Starting command 6f6b425b-5ebb-4d66-87ac-fc444e92406e on thread grpc-default-worker-ELG-3-1
+260917 00:25:41.951:I 31 [com.google.devtools.build.lib.server.CommandManager$RunningCommand.close] Finished command 6f6b425b-5ebb-4d66-87ac-fc444e92406e on thread grpc-default-worker-ELG-3-1
+260917 00:25:41.965:I 33 [com.google.devtools.build.lib.server.CommandManager.registerCommand] Starting command 02beb16a-19c4-4a29-9635-41f59a1b1fe0 on thread grpc-command-0
+260917 00:25:41.969:I 33 [com.google.devtools.build.lib.server.GrpcServerImpl.executeCommand] [test, --startup_time=1081, --command_wait_time=0, --extract_data_time=0, --restart_reason=pid_file_but_no_server, --binary_path=/builder/bazel, --rc_source=client, --default_override=0:common=--isatty=0, --default_override=0:common=--terminal_columns=80, --rc_source=/workspace/.bazelrc, --rc_source=/root/.bazelrc, --default_override=1:build=--test_output=errors, --default_override=1:build=--action_env=GTEST_COLOR=1, --default_override=1:build=--incompatible_py3_is_default=false, --default_override=1:common=--enable_bzlmod, --client_env=HOSTNAME=200e02679eef, --client_env=NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt, --client_env=PWD=/workspace, --client_env=HOME=/root, --client_env=SSL_CERT_DIR=/etc/ssl/certs, --client_env=CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt, --client_env=SHLVL=1, --client_env=SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt, --client_env=REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt, --client_env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin, --client_env=DEBIAN_FRONTEND=noninteractive, --client_env=_=/builder/bazel, --client_cwd=/workspace, //core:tests, --noenable_bzlmod, --build_event_text_file=/tmp/build_event_text_file.fJ05G]
+260917 00:25:42.047:I 33 [com.google.devtools.build.lib.actions.LocalHostCapacity.getNewLocalHostCapacity] Determined local resources: RAM=15989MB, CPU=4.0
+260917 00:25:42.308:I 33 [com.google.devtools.build.lib.metrics.PostGCMemoryUseRecorder.<init>] Listening for notifications from GC: G1 Young Generation
+260917 00:25:42.308:I 33 [com.google.devtools.build.lib.metrics.PostGCMemoryUseRecorder.<init>] Listening for notifications from GC: G1 Concurrent GC
+260917 00:25:42.309:I 33 [com.google.devtools.build.lib.metrics.PostGCMemoryUseRecorder.<init>] Listening for notifications from GC: G1 Old Generation
+260917 00:25:42.328:I 33 [com.google.devtools.build.lib.util.DebugLoggerConfigurator.setupLogging] Log level: INFO
+260917 00:25:42.386:I 33 [com.google.devtools.build.lib.skyframe.DiffAwarenessManager.maybeGetDiffAwarenessState] Using local DiffAwareness strategy for /workspace
+260917 00:25:42.387:I 33 [com.google.devtools.build.lib.skyframe.DiffAwarenessManager.getDiff] Initial baseline view for /workspace is SequentialView[owner=null, position=-2, modifiedAbsolutePaths=[]]
+260917 00:25:42.389:I 33 [com.google.devtools.build.lib.skyframe.SkyframeExecutor.handleDiffsWithMissingDiffInformation] About to scan skyframe graph checking for filesystem nodes of types [OUTPUT, EXTERNAL_REPO]
+260917 00:25:42.392:I 33 [com.google.devtools.build.lib.skyframe.FilesystemValueChecker.lambda$getDirtyValues$5] Spent 1521126 nanoseconds checking 2 filesystem nodes (29 scanned)
+260917 00:25:42.392:I 33 [com.google.devtools.build.lib.skyframe.SkyframeExecutor.logDiffInfo] DiffAwareness found 0 modified source files and directory listings for /workspace
+260917 00:25:42.730:I 70 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75/embedded_tools]/[]
+260917 00:25:42.736:I 149 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[]
+260917 00:25:42.737:I 70 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools]
+260917 00:25:42.737:I 74 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/.bazelignore]
+260917 00:25:42.739:I 102 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools]
+260917 00:25:42.739:I 102 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs]
+260917 00:25:42.740:I 149 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo]
+260917 00:25:42.741:I 149 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/BUILD.bazel]
+260917 00:25:42.741:I 102 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/BUILD]
+260917 00:25:42.742:I 102 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/local.bzl]
+260917 00:25:42.764:I 149 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/http.bzl]
+260917 00:25:42.767:I 74 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/cache.bzl]
+260917 00:25:42.770:I 102 [com.google.devtools.build.lib.skyframe.ExternalFilesHelper.maybeHandleExternalFile] Encountered an external path [/root/.cache/bazel/_bazel_root/install/aeea4605fbb10c56d04772b8e314db75]/[embedded_tools/tools/build_defs/repo/utils.bzl]
+260917 00:25:55.524:WT 74 [com.google.devtools.build.skyframe.AbstractParallelEvaluator$Evaluate.run] Aborting evaluation while evaluating REPOSITORY_DIRECTORY:@@build_bazel_rules_nodejs
+com.google.devtools.build.lib.rules.repository.RepositoryFunction$RepositoryFunctionException: com.google.devtools.build.lib.rules.repository.RepositoryFunction$AlreadyReportedRepositoryAccessException: java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.google.devtools.build.lib.bazel.repository.starlark.StarlarkRepositoryFunction.fetchInternal(StarlarkRepositoryFunction.java:371)
+	at com.google.devtools.build.lib.bazel.repository.starlark.StarlarkRepositoryFunction.fetchInternal(StarlarkRepositoryFunction.java:199)
+	at com.google.devtools.build.lib.bazel.repository.starlark.StarlarkRepositoryFunction.lambda$fetch$1(StarlarkRepositoryFunction.java:155)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:131)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:75)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:82)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(Unknown Source)
+	at java.base/java.lang.VirtualThread.run(Unknown Source)
+Caused by: com.google.devtools.build.lib.rules.repository.RepositoryFunction$AlreadyReportedRepositoryAccessException: java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	... 8 more
+Caused by: com.google.devtools.build.lib.rules.repository.RepositoryFunction$RepositoryFunctionException: java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.google.devtools.build.lib.bazel.repository.starlark.StarlarkBaseExternalContext.downloadAndExtract(StarlarkBaseExternalContext.java:993)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at net.starlark.java.eval.MethodDescriptor.call(MethodDescriptor.java:178)
+	at net.starlark.java.eval.BuiltinFunction.fastcall(BuiltinFunction.java:78)
+	at net.starlark.java.eval.Starlark.fastcall(Starlark.java:806)
+	at net.starlark.java.eval.Eval.evalCall(Eval.java:682)
+	at net.starlark.java.eval.Eval.eval(Eval.java:497)
+	at net.starlark.java.eval.Eval.execAssignment(Eval.java:109)
+	at net.starlark.java.eval.Eval.exec(Eval.java:268)
+	at net.starlark.java.eval.Eval.execStatements(Eval.java:82)
+	at net.starlark.java.eval.Eval.execFunctionBody(Eval.java:66)
+	at net.starlark.java.eval.StarlarkFunction.fastcall(StarlarkFunction.java:179)
+	at net.starlark.java.eval.Starlark.fastcall(Starlark.java:806)
+	at net.starlark.java.eval.Starlark.call(Starlark.java:772)
+	at com.google.devtools.build.lib.bazel.repository.starlark.StarlarkRepositoryFunction.fetchInternal(StarlarkRepositoryFunction.java:324)
+	... 7 more
+Caused by: java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.google.devtools.build.lib.bazel.repository.downloader.HttpDownloader.download(HttpDownloader.java:136)
+	at com.google.devtools.build.lib.bazel.repository.downloader.DelegatingDownloader.download(DelegatingDownloader.java:63)
+	at com.google.devtools.build.lib.bazel.repository.downloader.DownloadManager.downloadInExecutor(DownloadManager.java:306)
+	at com.google.devtools.build.lib.bazel.repository.downloader.DownloadManager.lambda$startDownload$0(DownloadManager.java:119)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	... 1 more
+	Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+		at java.base/sun.security.ssl.Alert.createSSLException(Unknown Source)
+		at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+		at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+		at java.base/sun.security.ssl.TransportContext.fatal(Unknown Source)
+		at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(Unknown Source)
+		at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(Unknown Source)
+		at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(Unknown Source)
+		at java.base/sun.security.ssl.SSLHandshake.consume(Unknown Source)
+		at java.base/sun.security.ssl.HandshakeContext.dispatch(Unknown Source)
+		at java.base/sun.security.ssl.HandshakeContext.dispatch(Unknown Source)
+		at java.base/sun.security.ssl.TransportContext.dispatch(Unknown Source)
+		at java.base/sun.security.ssl.SSLTransport.decode(Unknown Source)
+		at java.base/sun.security.ssl.SSLSocketImpl.decode(Unknown Source)
+		at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(Unknown Source)
+		at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(Unknown Source)
+		at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(Unknown Source)
+		at java.base/sun.net.www.protocol.https.HttpsClient.afterConnect(Unknown Source)
+		at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(Unknown Source)
+		at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(Unknown Source)
+		at com.google.devtools.build.lib.bazel.repository.downloader.HttpConnector.connect(HttpConnector.java:156)
+		at com.google.devtools.build.lib.bazel.repository.downloader.HttpConnectorMultiplexer.connect(HttpConnectorMultiplexer.java:116)
+		at com.google.devtools.build.lib.bazel.repository.downloader.HttpDownloader.download(HttpDownloader.java:99)
+		... 5 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+		Suppressed: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			... 27 more
+		Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+			at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+			at java.base/sun.security.validator.Validator.validate(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+			at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+			... 23 more
+		Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+			at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+			at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+			... 28 more
+	Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+		at java.base/sun.security.validator.PKIXValidator.doBuild(Unknown Source)
+		at java.base/sun.security.validator.PKIXValidator.engineValidate(Unknown Source)
+		at java.base/sun.security.validator.Validator.validate(Unknown Source)
+		at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(Unknown Source)
+		at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(Unknown Source)
+		... 23 more
+	Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+		at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(Unknown Source)
+		at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(Unknown Source)
+		at java.base/java.security.cert.CertPathBuilder.build(Unknown Source)
+		... 28 more
+260917 00:25:55.552:IT 33 [com.google.devtools.build.lib.runtime.BlazeCommandDispatcher.execExclusively] Error computing main repo mapping
+com.google.devtools.build.lib.skyframe.RepositoryMappingValue$RepositoryMappingResolutionException: Error computing the main repository mapping: no such package '@@build_bazel_rules_nodejs//': java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.google.devtools.build.lib.skyframe.SkyframeExecutor.getMainRepoMapping(SkyframeExecutor.java:2738)
+	at com.google.devtools.build.lib.skyframe.SkyframeExecutor.getMainRepoMapping(SkyframeExecutor.java:2711)
+	at com.google.devtools.build.lib.runtime.BlazeCommandDispatcher.execExclusively(BlazeCommandDispatcher.java:592)
+	at com.google.devtools.build.lib.runtime.BlazeCommandDispatcher.exec(BlazeCommandDispatcher.java:244)
+	at com.google.devtools.build.lib.server.GrpcServerImpl.executeCommand(GrpcServerImpl.java:573)
+	at com.google.devtools.build.lib.server.GrpcServerImpl.lambda$run$1(GrpcServerImpl.java:644)
+	at io.grpc.Context$1.run(Context.java:566)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.google.devtools.build.lib.packages.RepositoryFetchException: no such package '@@build_bazel_rules_nodejs//': java.io.IOException: Error downloading [https://github.com/bazelbuild/rules_nodejs/releases/download/3.8.0/rules_nodejs-3.8.0.tar.gz] to /workspace/.bazel/external/build_bazel_rules_nodejs/temp13419624455780613094/rules_nodejs-3.8.0.tar.gz: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.google.devtools.build.lib.skyframe.PackageLookupFunction.computeExternalPackageLookupValue(PackageLookupFunction.java:390)
+	at com.google.devtools.build.lib.skyframe.PackageLookupFunction.compute(PackageLookupFunction.java:114)
+	at com.google.devtools.build.skyframe.ParallelEvaluator.bubbleErrorUp(ParallelEvaluator.java:422)
+	at com.google.devtools.build.skyframe.ParallelEvaluator.waitForCompletionAndConstructResult(ParallelEvaluator.java:212)
+	at com.google.devtools.build.skyframe.ParallelEvaluator.doMutatingEvaluation(ParallelEvaluator.java:178)
+	at com.google.devtools.build.skyframe.ParallelEvaluator.eval(ParallelEvaluator.java:676)
+	at com.google.devtools.build.skyframe.InMemoryMemoizingEvaluator.evaluate(InMemoryMemoizingEvaluator.java:147)
+	at com.google.devtools.build.lib.skyframe.SkyframeExecutor.evaluate(SkyframeExecutor.java:3600)
+	at com.google.devtools.build.lib.skyframe.SkyframeExecutor.getMainRepoMapping(SkyframeExecutor.java:2719)
+	... 9 more
+260917 00:25:55.596:I 33 [com.google.devtools.build.lib.buildeventservice.BuildEventServiceModule.waitForBuildEventTransportsToClose] Spent 21 milliseconds doing waiting for BES close for invocation 67e56b4f-0cd3-4895-ae56-909b36056568

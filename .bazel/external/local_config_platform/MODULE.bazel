@@ -1,0 +1,3 @@
+# DO NOT EDIT: automatically generated MODULE file for local_config_platform
+module(name = "local_config_platform")
+bazel_dep(name = "platforms", version = "0.0.7")

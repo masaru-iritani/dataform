@@ -1,0 +1,3 @@
+Computing main repo mapping: 
+ERROR: Error computing the main repository mapping: Error accessing registry https://bcr.bazel.build/: Failed to fetch registry file https://bcr.bazel.build/modules/gazelle/0.37.0/MODULE.bazel: Unknown host: bcr.bazel.build
+INFO: Build Event Protocol files produced successfully.
