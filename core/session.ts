@@ -255,7 +255,7 @@ export class Session {
 
   public resolve(ref: Resolvable | string[], ...rest: string[]): string {
     ref = toResolvable(ref, rest);
-    const allResolved = this.indexedActions.find(utils.resolvableAsTarget(ref));
+    const allResolved = this.findResolvableActions(ref);
     if (allResolved.length > 1) {
       this.compileError(new Error(utils.ambiguousActionNameMsg(ref, allResolved)));
       return "";
@@ -282,7 +282,7 @@ export class Session {
     ...rest: string[]
   ): dataform.ITarget | undefined {
     ref = toResolvable(ref, rest);
-    const allResolved = this.indexedActions.find(utils.resolvableAsTarget(ref));
+    const allResolved = this.findResolvableActions(ref);
     if (allResolved.length !== 1) {
       return undefined;
     }
@@ -300,6 +300,48 @@ export class Session {
       schema: this.finalizeSchema(target.schema),
       name: this.finalizeName(target.name)
     };
+  }
+
+  private findResolvableActions(ref: Resolvable): Action[] {
+    const refTarget = utils.resolvableAsTarget(ref);
+    const candidates = this.indexedActions.find(refTarget);
+    if (candidates.length <= 1 || refTarget.schema || refTarget.database) {
+      return candidates;
+    }
+
+    const preferredCandidates = candidates.filter(candidate => {
+      const candidateTarget = candidate.getTarget();
+      return (
+        candidateTarget.database === this.projectConfig.defaultDatabase &&
+        candidateTarget.schema === this.projectConfig.defaultSchema
+      );
+    });
+    if (preferredCandidates.length === 1) {
+      return preferredCandidates;
+    }
+
+    const maxMatchCount = Math.max(
+      ...candidates.map(candidate => this.defaultTargetMatchCount(candidate.getTarget()))
+    );
+    if (maxMatchCount === 0) {
+      return candidates;
+    }
+
+    const bestCandidates = candidates.filter(
+      candidate => this.defaultTargetMatchCount(candidate.getTarget()) === maxMatchCount
+    );
+    return bestCandidates.length === 1 ? bestCandidates : candidates;
+  }
+
+  private defaultTargetMatchCount(target: dataform.ITarget): number {
+    let matchCount = 0;
+    if (!!this.projectConfig.defaultDatabase && target.database === this.projectConfig.defaultDatabase) {
+      matchCount += 1;
+    }
+    if (!!this.projectConfig.defaultSchema && target.schema === this.projectConfig.defaultSchema) {
+      matchCount += 1;
+    }
+    return matchCount;
   }
 
   /**

@@ -204,6 +204,62 @@ publish("b", {"schema": "foo"}).dependencies("a")`
     ]);
   });
 
+  test("prefers the default schema and database for ambiguous name-only ref calls", () => {
+    const projectDir = tmpDirFixture.createNewTmpDir();
+    writeWorkflowSettingsFile(projectDir, VALID_WORKFLOW_SETTINGS_YAML);
+    writeDefinitionFile(projectDir, "default.sqlx", `config { type: "view", name: "a" }\nSELECT 1`);
+    writeDefinitionFile(
+      projectDir,
+      "other_schema.sqlx",
+      `config { type: "view", name: "a", schema: "otherDataset" }\nSELECT 1`
+    );
+    writeDefinitionFile(
+      projectDir,
+      "other_database.sqlx",
+      `config { type: "view", name: "a", database: "otherProject" }\nSELECT 1`
+    );
+    writeDefinitionFile(
+      projectDir,
+      "consumer.sqlx",
+      `config { type: "view", name: "consumer" }\nSELECT * FROM \${ref("a")}`
+    );
+
+    const result = runMainInVm(coreExecutionRequestFromPath(projectDir));
+
+    expect(result.compile.compiledGraph.graphErrors.compilationErrors).deep.equals([]);
+    expect(result.compile.compiledGraph.tables[3].query).deep.equals(
+      "SELECT * FROM `defaultProject.defaultDataset.a`"
+    );
+  });
+
+  test("keeps ambiguous name-only ref calls ambiguous when defaults do not pick a unique target", () => {
+    const projectDir = tmpDirFixture.createNewTmpDir();
+    writeWorkflowSettingsFile(projectDir, VALID_WORKFLOW_SETTINGS_YAML);
+    writeDefinitionFile(
+      projectDir,
+      "default_database.sqlx",
+      `config { type: "view", name: "a", database: "defaultProject", schema: "otherDataset" }\nSELECT 1`
+    );
+    writeDefinitionFile(
+      projectDir,
+      "default_schema.sqlx",
+      `config { type: "view", name: "a", database: "otherProject", schema: "defaultDataset" }\nSELECT 1`
+    );
+    writeDefinitionFile(
+      projectDir,
+      "consumer.sqlx",
+      `config { type: "view", name: "consumer" }\nSELECT * FROM \${ref("a")}`
+    );
+
+    const result = runMainInVm(coreExecutionRequestFromPath(projectDir));
+
+    expect(
+      result.compile.compiledGraph.graphErrors.compilationErrors?.map(error => error.message)
+    ).deep.equals([
+      `Ambiguous Action name: {"name":"a","includeDependentAssertions":false}. Did you mean one of: otherDataset.a, defaultDataset.a.`
+    ]);
+  });
+
   suite("context methods", () => {
     [
       WorkflowSettingsTemplates.bigqueryWithDefaultProjectAndDataset,
