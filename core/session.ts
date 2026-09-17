@@ -309,15 +309,15 @@ export class Session {
       return candidates;
     }
 
-    const preferredCandidates = candidates.filter(candidate => {
+    const fallbackCandidates = candidates.filter(candidate => {
       const candidateTarget = candidate.getTarget();
       return (
         candidateTarget.database === this.projectConfig.defaultDatabase &&
         candidateTarget.schema === this.projectConfig.defaultSchema
       );
     });
-    if (preferredCandidates.length === 1) {
-      return preferredCandidates;
+    if (fallbackCandidates.length === 1) {
+      return fallbackCandidates;
     }
     return candidates;
   }
